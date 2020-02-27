@@ -10,9 +10,9 @@ class Resource {
     private Collection $items;
     private array $resource;
 
-    public function __construct(array $items)
+    public function __construct()
     {
-        $this->items = collect($items);
+
     }
 
     /**

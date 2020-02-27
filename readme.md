@@ -47,3 +47,16 @@ class UserResource extends Resource
 
 `links` will pattern match based on keys it finds in your `toArray`.
 
+
+## Using 
+
+```php
+
+public function __invoke($request) 
+{
+    $users = new UserResource(EloquentUser::getByEmail($request->email));
+
+    InertiaResponse::view('foo', compact('users'))
+}
+
+```

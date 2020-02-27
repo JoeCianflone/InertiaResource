@@ -13,7 +13,6 @@ class Resource {
     public function __construct(array $items)
     {
         $this->items = collect($items);
-        $this->transform(collect($items));
     }
 
     /**
@@ -21,15 +20,17 @@ class Resource {
      * all the necessary transformations
      *
      * @param Collection $items
-     * @return void
+     * @return array
      */
-    public function transform(Collection $items): void
+    public function transform(array $items): array
     {
+        $this->items = collect($items);
+
         $transformer = new ResourceBuilder(new ResourceLinks(collect(static::links())));
         $transformer->setMeta(static::meta());
-        $transformer->setData($items);
+        $transformer->setData($this->items);
 
-        $this->resource = $transformer->get();
+        return $transformer->get();
     }
 
     /**
@@ -43,14 +44,6 @@ class Resource {
         $links = static::links();
 
         return $links[$key] ?? null;
-    }
-
-    /**
-     * @return array
-     */
-    public function get(): array
-    {
-        return $this->resource;
     }
 
     /**

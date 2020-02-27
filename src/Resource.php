@@ -34,16 +34,31 @@ class Resource {
     }
 
     /**
-     * Gets a single value from the link key
+     * get the value for a link, if necessary, hydrate
      *
      * @param string $key
+     * @param mixed ...$hydrateWith
      * @return string|null
      */
-    public static function link(string $key): ?string
+    public static function link(string $key, ...$hydrateWith): ?string
     {
         $links = static::links();
 
-        return $links[$key] ?? null;
+        if (! array_key_exists($key, $links)) {
+            return null;
+        }
+
+        $link = $links[$key];
+
+        if (count($hydrateWith) > 0) {
+            preg_match_all('/\{[\w\-]+\}/', $link, $output);
+            
+            for ($i = 0; $i < count($output[0]); $i++) {
+              $link = str_replace($output[0][$i], $hydrate[$i], $link);
+            }            
+        }
+
+        return $link;
     }
 
     /**

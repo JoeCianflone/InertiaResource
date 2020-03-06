@@ -21,7 +21,7 @@ abstract class GeneratorCommand extends Command
 
     protected function getStub(string $type): string
     {
-        return rtrim(file_get_contents(base_path("stubs/$type.stub")));
+        return rtrim(file_get_contents(__DIR__ . "/../stubs/$type.stub"));
     }
 
     protected function replaceStubParts(string $stub, ?Collection $replacements = null): string

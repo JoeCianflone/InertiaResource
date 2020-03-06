@@ -8,32 +8,31 @@ use JoeCianflone\InertiaResource\Commands\GeneratorCommand;
 class MakeResource extends GeneratorCommand
 {
 
-    protected $signature = 'make:inertia-resource 
+    protected $signature = 'make:inertia-resource
                                 {name : What you\'d like to name the resource file}
                                 {pathing? : Path is configured in inertia-resource config file, but if you wan to override it you need to provide the full path}';
-                                    
+
 
     protected $description = 'Stub out an InertiaResource';
 
     public function __construct()
     {
         parent::__construct();
-        $this->path = $this->argument('pathing') ?? config('inertia-resource.path');
     }
 
     public function handle()
     {
+        $this->path = $this->argument('pathing') ?? config('inertia-resource.path');
+
+        $name .= config('inertia-resource.name_prefix');
+        $name .= $this->argument('name');
+        $name .= config('inertia-resource.name_suffix');
+
         $stub = $this->replaceStubParts($this->getStub('Resource'), collect([
-            "{{name}}" => $this->argument('name'),
+            "{{name}}" => $name,
         ]));
 
-        $file = "/";
-        $file .= config('inertia-resource.name_prefix');
-        $file .= $this->argument('name');
-        $file .= config('inertia-resource.name_suffix');
-        $file .= ".php";
-                     
-        $this->toDisk($file, $stub);
+        $this->toDisk("/{$name}.php", $stub);
         $this->info("Inertia resource file created");
     }
 }

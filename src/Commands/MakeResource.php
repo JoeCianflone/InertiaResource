@@ -2,6 +2,7 @@
 
 namespace JoeCianflone\InertiaResource\Commands;
 
+use Illuminate\Support\Str;
 use JoeCianflone\InertiaResource\Commands\GeneratorCommand;
 
 

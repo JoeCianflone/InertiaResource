@@ -2,11 +2,13 @@
 
 namespace JoeCianflone\InertiaResource\Commands;
 
+use JoeCianflone\InertiaResource\Commands\GeneratorCommand;
+
 
 class MakeResource extends GeneratorCommand
 {
 
-    protected $signature = 'make:resource {name}';
+    protected $signature = 'make:inertia-resource {name}';
 
     protected $description = 'Stub out an InertiaResource';
 

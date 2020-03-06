@@ -10,7 +10,7 @@ class MakeResource extends GeneratorCommand
 
     protected $signature = 'make:inertia-resource 
                                 {name : What you\'d like to name the resource file}
-                                {path? : Path is configured in inertia-resource config file, but if you wan to override it you need to provide the full path}';
+                                {pathing? : Path is configured in inertia-resource config file, but if you wan to override it you need to provide the full path}';
                                     
 
     protected $description = 'Stub out an InertiaResource';
@@ -18,7 +18,7 @@ class MakeResource extends GeneratorCommand
     public function __construct()
     {
         parent::__construct();
-        $this->path = $this->argument('path') ?: config('inertia-resource.path');
+        $this->path = $this->argument('pathing') ?: config('inertia-resource.path');
     }
 
     public function handle()

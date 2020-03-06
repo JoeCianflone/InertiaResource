@@ -3,6 +3,7 @@
 namespace JoeCianflone\InertiaResource;
 
 use Illuminate\Support\ServiceProvider;
+use JoeCianflone\InertiaResource\Commands\MakeResource;
 
 class InertiaResourceServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,11 @@ class InertiaResourceServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/inertia-resource.php' => config_path('inertia-resource.php'),
         ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                MakeResource::class,
+            ]);
+        }        
     }
 }

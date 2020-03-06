@@ -9,8 +9,8 @@ class MakeResource extends GeneratorCommand
 {
 
     protected $signature = 'make:inertia-resource 
-                                    {name : What you\'d like to name the resource file}
-                                    {path? : Path is configured in inertia-resource config file, but if you wan to override it you need to provide the full path}';
+                                {name : What you\'d like to name the resource file}
+                                {path? : Path is configured in inertia-resource config file, but if you wan to override it you need to provide the full path}';
                                     
 
     protected $description = 'Stub out an InertiaResource';
@@ -27,8 +27,12 @@ class MakeResource extends GeneratorCommand
             "{{name}}" => $this->argument('name'),
         ]));
 
-        $file = "/".$this->argument('name').".php";
-
+        $file = "/";
+        $file .= config('inertia-resource.name_prefix');
+        $file .= $this->argument('name');
+        $file .= config('inertia-resource.name_suffix');
+        $file .= ".php";
+                     
         $this->toDisk($file, $stub);
         $this->info("Inertia resource file created");
     }

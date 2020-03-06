@@ -18,7 +18,7 @@ class MakeResource extends GeneratorCommand
     public function __construct()
     {
         parent::__construct();
-        $this->path = $this->argument('pathing') ?: config('inertia-resource.path');
+        $this->path = $this->argument('pathing') ?? config('inertia-resource.path');
     }
 
     public function handle()

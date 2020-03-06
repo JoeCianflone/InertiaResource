@@ -29,6 +29,7 @@ class MakeResource extends GeneratorCommand
         $name .= config('inertia-resource.name_suffix');
 
         $stub = $this->replaceStubParts($this->getStub('Resource'), collect([
+            "{{namespace}}" => Str::ucfirst(Str::replaceFirst("\\", "", str_replace("/", "\\", $name))),
             "{{name}}" => $name,
         ]));
 

@@ -24,7 +24,7 @@ class MakeResource extends GeneratorCommand
     {
         $this->path = $this->argument('pathing') ?? config('inertia-resource.path');
 
-        $name .= config('inertia-resource.name_prefix');
+        $name = config('inertia-resource.name_prefix');
         $name .= $this->argument('name');
         $name .= config('inertia-resource.name_suffix');
 

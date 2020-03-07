@@ -98,8 +98,12 @@ return [
     'data' => 'data',
     'meta' => 'meta',
     'path' => '/app/Http/Resources',
+    'name_prefix' => '',
+    'name_suffix' => '',
 ];
 ```
 
 `links`, `data`, and `meta` are related to the names of the object that gets created by InertiaResource. If you don't like those names, feel free to update them here. `path` is related to where the Resource files will be stored on your computer. 
+
+`name_prefix` and `_suffix` are for if you like to name your files using a specific convention. So let's say you like to add the word `Resource` to all your resources...instead of remembering that you can just add it as a `name_suffix` and  then it will just get appended all the time. 
 

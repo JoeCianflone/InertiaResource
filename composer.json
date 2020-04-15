@@ -1,5 +1,5 @@
 {
-    "name": "joecianflone/inertia-resource",
+    "name": "joe-cianflone/inertia-resource",
     "type": "library",
     "description": "Simple Resource Thing",
     "require": {
@@ -15,7 +15,7 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "JoeCianflone\\InertiaResource\\" : "src/JoeCianflone/InertiaResource"
+            "JoeCianflone\\InertiaResource\\" : "src/"
         }
     },
     "minimum-stability": "dev",

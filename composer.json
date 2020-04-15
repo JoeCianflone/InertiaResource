@@ -15,7 +15,7 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "JoeCianflone\\InertiaResource\\" : "src"
+            "JoeCianflone\\InertiaResource\\" : "src/JoeCianflone/InertiaResource"
         }
     },
     "minimum-stability": "dev",

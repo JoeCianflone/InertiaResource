@@ -15,7 +15,8 @@ class InertiaResourceServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/inertia-resource.php', 'inertia-resource'
+            __DIR__.'/../config/inertia-resource.php',
+            'inertia-resource'
         );
     }
 
@@ -34,6 +35,6 @@ class InertiaResourceServiceProvider extends ServiceProvider
             $this->commands([
                 MakeResource::class,
             ]);
-        }        
+        }
     }
 }

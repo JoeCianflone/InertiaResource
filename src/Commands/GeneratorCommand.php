@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 abstract class GeneratorCommand extends Command
 {
-
     protected $path = "";
 
     public function __construct()
@@ -21,7 +20,7 @@ abstract class GeneratorCommand extends Command
 
     protected function getStub(string $type): string
     {
-        return rtrim(file_get_contents(__DIR__ . "/../stubs/$type.stub"));
+        return rtrim(file_get_contents(__DIR__ . "/../../stubs/$type.stub"));
     }
 
     protected function replaceStubParts(string $stub, ?Collection $replacements = null): string
@@ -44,7 +43,7 @@ abstract class GeneratorCommand extends Command
 
     protected function ucDeconstructPath(string $path): array
     {
-        $pathParts = collect(explode('/', $path))->map(function($item) {
+        $pathParts = collect(explode('/', $path))->map(function ($item) {
             return ucwords($item);
         });
 
@@ -55,7 +54,7 @@ abstract class GeneratorCommand extends Command
     {
         $className = array_pop($parts);
         $namespace = trim(implode("\\", $parts), "\\");
-        $path = trim(str_replace("\\", "/",$namespace), "/");
+        $path = trim(str_replace("\\", "/", $namespace), "/");
 
         return [$className, $namespace, $path];
     }

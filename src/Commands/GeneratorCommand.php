@@ -17,7 +17,6 @@ abstract class GeneratorCommand extends Command
 
     abstract public function handle();
 
-
     protected function getStub(string $type): string
     {
         return rtrim(file_get_contents(__DIR__ . "/../../stubs/$type.stub"));

@@ -5,14 +5,13 @@ use Illuminate\Support\Collection;
 use JoeCianflone\InertiaResource\ResourceLinks;
 use JoeCianflone\InertiaResource\ResourceBuilder;
 
-class Resource {
-
+class Resource
+{
     private Collection $items;
     private array $resource;
 
     public function __construct()
     {
-
     }
 
     /**
@@ -54,8 +53,8 @@ class Resource {
             preg_match_all('/\{[\w\-]+\}/', $link, $output);
             
             for ($i = 0; $i < count($output[0]); $i++) {
-              $link = str_replace($output[0][$i], $hydrate[$i], $link);
-            }            
+                $link = str_replace($output[0][$i], $hydrate[$i], $link);
+            }
         }
 
         return $link;
@@ -76,5 +75,4 @@ class Resource {
     {
         return [];
     }
-
 }
